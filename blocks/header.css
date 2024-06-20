@@ -1,0 +1,25 @@
+.header {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+}
+
+.header__logo {
+  width: 94px;
+  height: 26px;
+}
+
+/* .header {
+  display: flex;
+  padding-bottom: 20px;
+}
+
+.header__avatar {
+  display: flex;
+}
+
+.header__avatar_type_image {
+  max-width: 100%;
+  height: auto;
+} */
