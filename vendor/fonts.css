@@ -1,7 +1,8 @@
 @font-face {
   font-family: "Poppins";
-  font-weight: 16px;
-  src: url(./fonts/Poppins-Black.ttf) format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  src: url(./fonts/Poppins-Regular.ttf) format("truetype");
 }
 
 @font-face {
