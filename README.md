@@ -38,7 +38,7 @@ It was created using HTML and CSS, based on a Figma design brief.
 
 **Pages link**
 
-https://dshort13.github.io/se_project_spots/
+https://dshort13.github.io/se_project_spots/index.html
 
 **Video**
 
