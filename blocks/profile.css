@@ -96,6 +96,7 @@
   .profile {
     flex-direction: column;
     align-items: center;
+    padding: 20px 0;
   }
 
   .profile__avatar {
@@ -123,5 +124,6 @@
 
   .profile__add-btn {
     margin: auto;
+    width: 288px;
   }
 }
