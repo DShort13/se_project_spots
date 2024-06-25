@@ -57,6 +57,7 @@
   text-wrap: nowrap;
   padding: 0;
   display: flex;
+  cursor: pointer;
 }
 
 .profile__edit-btn:hover {
@@ -80,6 +81,7 @@
   width: 149px;
   height: 52px;
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .profile__add-btn:hover {

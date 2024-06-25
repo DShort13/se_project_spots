@@ -10,7 +10,6 @@
   grid-template-columns: repeat(auto-fit, 413px);
   justify-content: center;
   grid-column-gap: 20px;
-  grid-row-gap: 40px;
   border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
 }
 
