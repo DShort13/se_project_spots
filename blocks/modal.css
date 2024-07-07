@@ -95,6 +95,8 @@
     max-width: 330px;
     width: 100%;
     padding: 22px 12px 12px;
+    margin-left: 10px;
+    margin-right: 10px;
   }
 
   .modal__close-btn {
