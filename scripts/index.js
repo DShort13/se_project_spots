@@ -33,8 +33,10 @@ const initialCards = [
 
 const editProfileButton = document.querySelector(".profile__edit-btn");
 const editProfileModal = document.querySelector("#edit-modal");
-const editProfileModalCloseBtn =
-  editProfileModal.querySelector(".modal__close-btn");
+const editProfileModalCloseBtn = document.querySelector(
+  "#profile-modal-close-btn"
+);
+const editProfileForm = document.querySelector("#edit-profile");
 
 editProfileButton.addEventListener("click", openModal);
 editProfileModalCloseBtn.addEventListener("click", closeModal);
@@ -65,7 +67,7 @@ function handleFormSubmit(evt) {
   closeModal();
 }
 
-editProfileModal.addEventListener("submit", handleFormSubmit);
+editProfileForm.addEventListener("submit", handleFormSubmit);
 
 const cardTemplate = document.querySelector("#card-template").content;
 const cardsList = document.querySelector(".cards__list");
@@ -83,6 +85,6 @@ function getCardElement(data) {
 }
 
 for (i = 0; i < initialCards.length; i++) {
-  cardElement = getCardElement(initialCards[i]);
+  const cardElement = getCardElement(initialCards[i]);
   cardsList.prepend(cardElement);
 }
