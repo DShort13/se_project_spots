@@ -88,6 +88,12 @@
   border-style: none;
   background-color: black;
   color: rgba(252, 245, 229, 1);
+  transition: background 0.3s;
+}
+
+.modal__submit-btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
 }
 
 @media screen and (max-width: 630px) {
