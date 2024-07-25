@@ -29,6 +29,11 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
     alt: "Mountain house",
   },
+  {
+    name: "Golden Gate Bridge",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
+    alt: "Golden Gate Bridge",
+  },
 ];
 
 // Profile elements
@@ -55,6 +60,13 @@ const titleInput = cardModal.querySelector("#add-card-caption-input");
 // Card-related elements
 const cardTemplate = document.querySelector("#card-template").content;
 const cardsList = document.querySelector(".cards__list");
+
+const previewModal = document.querySelector("#preview-modal");
+const previewModalImageElement = document.querySelector(".modal__image");
+const previewModalCaptionElement = document.querySelector(".modal__caption");
+const previewModalCloseBtn = previewModal.querySelector(
+  ".modal__close-btn_type_preview"
+);
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
@@ -90,9 +102,9 @@ function getCardElement(data) {
   const cardLikeButton = cardElement.querySelector(".card__like-btn");
   const cardBinButton = cardElement.querySelector(".card__bin-btn");
 
-  cardNameElement.textContent = data.name;
   cardImageElement.src = data.link;
   cardImageElement.alt = data.alt;
+  cardNameElement.textContent = data.name;
 
   cardLikeButton.addEventListener("click", () => {
     cardLikeButton.classList.toggle("card__like-btn_liked");
@@ -100,6 +112,17 @@ function getCardElement(data) {
 
   cardBinButton.addEventListener("click", () => {
     cardElement.remove("disabled");
+  });
+
+  cardImageElement.addEventListener("click", () => {
+    openModal(previewModal);
+    previewModalImageElement.src = data.link;
+    previewModalImageElement.alt = data.alt;
+    previewModalCaptionElement.textContent = data.name;
+  });
+
+  previewModalCloseBtn.addEventListener("click", () => {
+    closeModal(previewModal);
   });
 
   return cardElement;
