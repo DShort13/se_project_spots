@@ -122,6 +122,11 @@ function getCardElement(data) {
   return cardElement;
 }
 
+function renderCard(item, method = "prepend") {
+  const cardElement = getCardElement(item);
+  cardsList[method](cardElement);
+}
+
 closeButtons.forEach((button) => {
   const modal = button.closest(".modal");
   button.addEventListener("click", () => closeModal(modal));
@@ -140,8 +145,7 @@ cardModalButton.addEventListener("click", () => {
 });
 
 initialCards.forEach((item) => {
-  const cardElement = getCardElement(item);
-  cardsList.prepend(cardElement);
+  renderCard(item);
 });
 
 cardModalForm.addEventListener("submit", handleAddCardSubmit);
