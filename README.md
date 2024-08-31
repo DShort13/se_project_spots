@@ -1,4 +1,4 @@
-# Project 3: Spots
+# Project 6: Spots
 
 ### Overview
 
@@ -11,9 +11,9 @@
 
 **Project description**
 
-This is the Sprint 3 project of TripleTen's Software Engineering course. It's an interactive social media web application that allows users to add and remove photos, like photos, and make minor adjustments to their profile, such as editing their profile name.
+I'm currently at the end of Sprint 6 at this stage of the TripleTen's Software Engineering course project 'Spots'. It's an interactive social media web application that allows users to add and remove photos, like photos, and make minor adjustments to their profile, such as editing their profile name.
 
-It was created using HTML and CSS, based on a Figma design brief.
+It was created using HTML, CSS, and Javascript, based on a Figma design brief.
 
 - [Link to the project on Figma](https://www.figma.com/file/BBNm2bC3lj8QQMHlnqRsga/Sprint-3-Project-%E2%80%94-Spots?type=design&node-id=2%3A60&mode=design&t=afgNFybdorZO6cQo-1)
 
@@ -25,6 +25,7 @@ It was created using HTML and CSS, based on a Figma design brief.
 - Exporting images from Figma
 - Positioning
 - BEM methodology
+- Javascript
 
 **Images**
 
