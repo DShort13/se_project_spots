@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name=" description" content="social media web application" />
     <meta name="keywords" content="social media, photos, profile, likes" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <link rel="icon" href="favicon.ico" />
     <title>Spots Social Media</title>
   </head>
   <body>
     <div class="page">
       <header class="header">
-        <img src="./images/logo.svg" alt="Spot logo" class="header__logo" />
+        <img
+          src="<%= require('../src/images/logo.svg')%>"
+          alt="Spot logo"
+          class="header__logo"
+        />
       </header>
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/avatar.jpg"
+            src="<%= require('../src/images/avatar.jpg')%>"
             alt="Current user's avatar"
             class="profile__avatar"
           />
@@ -26,7 +29,7 @@
             <p class="profile__description">Civil Aviator</p>
             <button type="button" class="profile__edit-btn">
               <img
-                src="./images/pencil_icon.svg"
+                src="<%= require('../src/images/pencil_icon.svg')%>"
                 alt="pencil icon"
                 class="profile__pencil-icon"
               />
@@ -35,7 +38,7 @@
           </div>
           <button type="button" class="profile__add-btn">
             <img
-              src="./images/plus_icon.svg"
+              src="<%= require('../src/images/plus_icon.svg')%>"
               alt="Plus icon"
               class="profile__plus-icon"
             />New Post
@@ -167,6 +170,5 @@
         </div>
       </div>
     </div>
-    <script type="module" src="./scripts/index.js" defer></script>
   </body>
 </html>

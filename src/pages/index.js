@@ -1,4 +1,9 @@
-import { enableValidation, settings, resetValidation } from "./validation.js";
+import "./index.css";
+import {
+  enableValidation,
+  settings,
+  resetValidation,
+} from "../scripts/validation.js";
 
 const initialCards = [
   {
@@ -37,6 +42,12 @@ const initialCards = [
     alt: "Golden Gate Bridge",
   },
 ];
+
+// Image elements
+// const logoImage = document.getElementById("image-logo");
+// logoImage.src = logoSrc;
+// const avatarImage = document.getElementById("image-avatar");
+// avatarImage.src = avatarSrc;
 
 // Universal elements
 const closeButtons = document.querySelectorAll("#modal-close-btn");
