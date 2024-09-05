@@ -4,6 +4,15 @@ import {
   settings,
   resetValidation,
 } from "../scripts/validation.js";
+import Api from "../../utils/Api";
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "58406471-2704-4b39-bb10-f7b7656fbc17",
+    "Content-Type": "application/json",
+  },
+});
 
 const initialCards = [
   {
@@ -42,12 +51,6 @@ const initialCards = [
     alt: "Golden Gate Bridge",
   },
 ];
-
-// Image elements
-// const logoImage = document.getElementById("image-logo");
-// logoImage.src = logoSrc;
-// const avatarImage = document.getElementById("image-avatar");
-// avatarImage.src = avatarSrc;
 
 // Universal elements
 const closeButtons = document.querySelectorAll("#modal-close-btn");
