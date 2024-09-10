@@ -44,6 +44,8 @@ import Api from "../utils/Api.js";
 //   },
 // ];
 
+// API
+
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
@@ -52,13 +54,23 @@ const api = new Api({
   },
 });
 
+// Destructure the second item in the callback of the .then()
+
 api
   .getAppInfo()
-  .then(([cards]) => {
+  .then(([cards, users]) => {
     console.log(cards);
     cards.forEach((item) => {
       renderCard(item);
     });
+
+    console.log(users);
+    users.avatar = profileImage.src;
+    users.name = profileName.textContent;
+    users.about = profileDescription.textContent;
+    // Handle the user's information
+    // - set the src of the avatar image
+    // - set the textContent of both the text elements
   })
   .catch(console.error);
 
@@ -67,6 +79,7 @@ const closeButtons = document.querySelectorAll("#modal-close-btn");
 
 // Profile elements
 const editProfileButton = document.querySelector(".profile__edit-btn");
+const profileImage = document.querySelector(".profile__avatar");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 const cardModalButton = document.querySelector(".profile__add-btn");
@@ -155,20 +168,21 @@ function getCardElement(data) {
 // Event handlers
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
-
-  profileName.textContent = nameInput.value;
-  profileDescription.textContent = descriptionInput.value;
-
-  closeModal(editProfileModal);
+  api
+    .editUserInfo({ name: nameInput.value, about: descriptionInput.value })
+    .then((data) => {
+      profileName.textContent = data.name;
+      profileDescription.textContent = data.about;
+      closeModal(editProfileModal);
+    })
+    .catch(console.error);
 }
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-
   const inputValues = { name: titleInput.value, link: imageInput.value };
   const cardElement = getCardElement(inputValues);
   cardsList.prepend(cardElement);
-
   cardModalForm.reset();
   disableButton(cardSubmitButton, settings);
   closeModal(cardModal);
