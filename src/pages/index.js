@@ -54,23 +54,18 @@ const api = new Api({
   },
 });
 
-// Destructure the second item in the callback of the .then()
-
 api
   .getAppInfo()
   .then(([cards, users]) => {
     console.log(cards);
-    cards.forEach((item) => {
-      renderCard(item);
+    cards.forEach((card) => {
+      renderCard(card);
     });
 
     console.log(users);
-    users.avatar = profileImage.src;
-    users.name = profileName.textContent;
-    users.about = profileDescription.textContent;
-    // Handle the user's information
-    // - set the src of the avatar image
-    // - set the textContent of both the text elements
+    profileImage.src = users.avatar;
+    profileName.textContent = users.name;
+    profileDescription.textContent = users.about;
   })
   .catch(console.error);
 

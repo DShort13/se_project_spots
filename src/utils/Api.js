@@ -24,7 +24,6 @@ class Api {
       res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
     );
   }
-  // Create another method, getUserInfo (different base url)
 
   editUserInfo({ name, about }) {
     return fetch(`${this._baseUrl}/users/me`, {
