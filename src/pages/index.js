@@ -45,7 +45,6 @@ import Api from "../utils/Api.js";
 // ];
 
 // API
-
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
   headers: {
