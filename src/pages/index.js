@@ -61,7 +61,6 @@ api
       renderCard(card);
     });
 
-    console.log(users);
     profileImage.src = users.avatar;
     profileName.textContent = users.name;
     profileDescription.textContent = users.about;
@@ -77,19 +76,26 @@ const profileImage = document.querySelector(".profile__avatar");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 const cardModalButton = document.querySelector(".profile__add-btn");
+const avatarModalButton = document.querySelector(".profile__avatar-btn");
 
-// Form elements
+// Card form elements
 const editProfileModal = document.querySelector("#edit-modal");
 const editProfileForm = editProfileModal.querySelector("#edit-profile-form");
 const nameInput = editProfileModal.querySelector("#profile-name-input");
 const descriptionInput = editProfileModal.querySelector(
   "#profile-description-input"
 );
-const cardModal = document.querySelector("#add-card-modal");
-const cardModalForm = cardModal.querySelector("#add-card-form");
+const cardModal = document.querySelector("#card-modal");
+const cardModalForm = cardModal.querySelector("#card-form");
 const cardSubmitButton = cardModal.querySelector(".modal__submit-btn");
-const imageInput = cardModal.querySelector("#add-card-link-input");
-const titleInput = cardModal.querySelector("#add-card-caption-input");
+const imageInput = cardModal.querySelector("#card-link-input");
+const titleInput = cardModal.querySelector("#card-caption-input");
+
+// Avatar form elements
+const avatarModal = document.querySelector("#avatar-modal");
+const avatarModalForm = avatarModal.querySelector("#edit-avatar-form");
+const avatarSubmitButton = avatarModal.querySelector(".modal__submit-btn");
+const avatarInput = avatarModal.querySelector("#profile-avatar-input");
 
 // Card-related elements
 const cardTemplate = document.querySelector("#card-template").content;
@@ -182,6 +188,19 @@ function handleAddCardSubmit(evt) {
   closeModal(cardModal);
 }
 
+function handleAvatarSubmit(evt) {
+  evt.preventDefault();
+  console.log(avatarInput.value);
+  api
+    .editAvatarInfo(avatarInput.value)
+    .then((data) => {
+      profileImage.src = data.avatar;
+      closeModal(avatarModal);
+    })
+    .catch(console.error);
+  avatarModalForm.reset();
+}
+
 // Event listeners
 closeButtons.forEach((button) => {
   const modal = button.closest(".modal");
@@ -202,6 +221,12 @@ cardModalButton.addEventListener("click", () => {
 });
 
 cardModalForm.addEventListener("submit", handleAddCardSubmit);
+
+avatarModalButton.addEventListener("click", () => {
+  openModal(avatarModal);
+});
+
+avatarModalForm.addEventListener("submit", handleAvatarSubmit);
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
