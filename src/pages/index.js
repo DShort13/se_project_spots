@@ -97,9 +97,14 @@ const avatarModalForm = avatarModal.querySelector("#edit-avatar-form");
 const avatarSubmitButton = avatarModal.querySelector(".modal__submit-btn");
 const avatarInput = avatarModal.querySelector("#profile-avatar-input");
 
+// Delete form elements
+const deleteModal = document.querySelector("#delete-modal");
+
 // Card-related elements
 const cardTemplate = document.querySelector("#card-template").content;
 const cardsList = document.querySelector(".cards__list");
+
+// Preview image popup elements
 
 const previewModal = document.querySelector("#preview-modal");
 const previewModalImageElement = document.querySelector(".modal__image");
@@ -147,25 +152,34 @@ function getCardElement(data) {
   cardImageElement.alt = data.alt;
   cardNameElement.textContent = data.name;
 
-  cardLikeButton.addEventListener("click", () => {
-    cardLikeButton.classList.toggle("card__like-btn_liked");
-  });
-
-  cardBinButton.addEventListener("click", () => {
-    cardElement.remove("disabled");
-  });
-
-  cardImageElement.addEventListener("click", () => {
-    openModal(previewModal);
-    previewModalImageElement.src = data.link;
-    previewModalImageElement.alt = data.alt;
-    previewModalCaptionElement.textContent = data.name;
-  });
+  cardLikeButton.addEventListener("click", handleLike);
+  cardBinButton.addEventListener("click", handleDeleteCard);
+  cardImageElement.addEventListener("click", handleImageClick);
+  // openModal(previewModal);
+  // previewModalImageElement.src = data.link;
+  // previewModalImageElement.alt = data.alt;
+  // previewModalCaptionElement.textContent = data.name;
 
   return cardElement;
 }
 
 // Event handlers
+function handleLike(evt) {
+  evt.target.classList.toggle("card__like-btn_liked");
+}
+
+function handleDeleteCard(evt) {
+  openModal(deleteModal);
+  // evt.target.closest(".card").remove();
+}
+
+function handleImageClick(data) {
+  openModal(previewModal);
+  previewModalImageElement.src = data.link;
+  previewModalImageElement.alt = data.alt;
+  previewModalCaptionElement.textContent = data.name;
+}
+
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
   api
