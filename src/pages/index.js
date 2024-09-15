@@ -3,6 +3,7 @@ import {
   enableValidation,
   settings,
   resetValidation,
+  disableButton,
 } from "../scripts/validation.js";
 import Api from "../utils/Api.js";
 
@@ -56,7 +57,6 @@ const api = new Api({
 api
   .getAppInfo()
   .then(([cards, users]) => {
-    console.log(cards);
     cards.forEach((card) => {
       renderCard(card);
     });
@@ -105,7 +105,6 @@ const cardTemplate = document.querySelector("#card-template").content;
 const cardsList = document.querySelector(".cards__list");
 
 // Preview image popup elements
-
 const previewModal = document.querySelector("#preview-modal");
 const previewModalImageElement = document.querySelector(".modal__image");
 const previewModalCaptionElement = document.querySelector(".modal__caption");
@@ -155,10 +154,6 @@ function getCardElement(data) {
   cardLikeButton.addEventListener("click", handleLike);
   cardBinButton.addEventListener("click", handleDeleteCard);
   cardImageElement.addEventListener("click", handleImageClick);
-  // openModal(previewModal);
-  // previewModalImageElement.src = data.link;
-  // previewModalImageElement.alt = data.alt;
-  // previewModalCaptionElement.textContent = data.name;
 
   return cardElement;
 }
@@ -194,17 +189,27 @@ function handleEditProfileSubmit(evt) {
 
 function handleAddCardSubmit(evt) {
   evt.preventDefault();
-  const inputValues = { name: titleInput.value, link: imageInput.value };
-  const cardElement = getCardElement(inputValues);
-  cardsList.prepend(cardElement);
-  cardModalForm.reset();
-  disableButton(cardSubmitButton, settings);
-  closeModal(cardModal);
+  console.log(imageInput.value);
+  api
+    .addCard({ name: titleInput.value, link: imageInput.value })
+    .then((data) => {
+      const cardElement = getCardElement(data);
+      cardsList.prepend(cardElement);
+      cardModalForm.reset();
+      disableButton(cardSubmitButton, settings);
+      closeModal(cardModal);
+    })
+    .catch(console.error);
+  // const inputValues = { name: titleInput.value, link: imageInput.value };
+  // const cardElement = getCardElement(inputValues);
+  // cardsList.prepend(cardElement);
+  // cardModalForm.reset();
+  // disableButton(cardSubmitButton, settings);
+  // closeModal(cardModal);
 }
 
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
-  console.log(avatarInput.value);
   api
     .editAvatarInfo(avatarInput.value)
     .then((data) => {
