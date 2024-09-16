@@ -64,6 +64,7 @@ const avatarInput = avatarModal.querySelector("#profile-avatar-input");
 
 // Delete form elements
 const deleteModal = document.querySelector("#delete-modal");
+const deleteForm = deleteModal.querySelector(".modal__form");
 
 // Card-related elements
 const cardTemplate = document.querySelector("#card-template").content;
@@ -118,7 +119,7 @@ function getCardElement(data) {
 
   cardLikeButton.addEventListener("click", handleLike);
   cardBinButton.addEventListener("click", () =>
-    handleDeleteCard(cardElement, data)
+    handleDeleteCard(cardElement, data._id)
   );
   cardImageElement.addEventListener("click", () => handleImageClick(data));
 
@@ -142,11 +143,10 @@ function handleLike(evt) {
   evt.target.classList.toggle("card__like-btn_liked");
 }
 
-function handleDeleteCard(cardElement, data) {
+function handleDeleteCard(cardElement, cardId) {
   selectedCard = cardElement;
-  selectedCardId = data;
+  selectedCardId = cardId;
   openModal(deleteModal);
-  // evt.target.closest(".card").remove();
 }
 
 function handleImageClick(data) {
@@ -220,7 +220,7 @@ cardModalButton.addEventListener("click", () => {
 
 cardModalForm.addEventListener("submit", handleAddCardSubmit);
 
-deleteModal.addEventListener("submit", handleDeleteCardSubmit);
+deleteForm.addEventListener("submit", handleDeleteCardSubmit);
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
