@@ -113,11 +113,15 @@ function getCardElement(data) {
   const cardLikeButton = cardElement.querySelector(".card__like-btn");
   const cardBinButton = cardElement.querySelector(".card__bin-btn");
 
+  if (data.isLiked) {
+    cardLikeButton.classList.add("card__like-btn_liked");
+  }
+
   cardImageElement.src = data.link;
   cardImageElement.alt = data.alt;
   cardNameElement.textContent = data.name;
 
-  cardLikeButton.addEventListener("click", handleLike);
+  cardLikeButton.addEventListener("click", (evt) => handleLike(evt, data._id));
   cardBinButton.addEventListener("click", () =>
     handleDeleteCard(cardElement, data._id)
   );
@@ -139,8 +143,14 @@ function handleAvatarSubmit(evt) {
   avatarModalForm.reset();
 }
 
-function handleLike(evt) {
-  evt.target.classList.toggle("card__like-btn_liked");
+function handleLike(evt, id) {
+  const isLiked = evt.target.classList.toggle("card__like-btn_liked");
+  api
+    .changeLikeStatus(id, isLiked)
+    .then((isLiked) => {
+      isLiked;
+    })
+    .catch(console.error);
 }
 
 function handleDeleteCard(cardElement, cardId) {
