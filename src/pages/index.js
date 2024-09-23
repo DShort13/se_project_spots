@@ -142,10 +142,10 @@ function handleAvatarSubmit(evt) {
     .then((data) => {
       profileImage.src = data.avatar;
       closeModal(avatarModal);
+      avatarModalForm.reset();
     })
     .catch(console.error)
     .finally(setButtonText(submitBtn, false));
-  avatarModalForm.reset();
 }
 
 function handleLike(evt, id) {
