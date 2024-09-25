@@ -69,8 +69,6 @@ const deleteForm = deleteModal.querySelector(".modal__form");
 // Card-related elements
 const cardTemplate = document.querySelector("#card-template").content;
 const cardsList = document.querySelector(".cards__list");
-const cardElement = cardTemplate.querySelector(".card").cloneNode(true);
-const cardLikeButton = cardElement.querySelector(".card__like-btn");
 
 // Preview image popup elements
 const previewModal = document.querySelector("#preview-modal");
@@ -151,19 +149,19 @@ function handleAvatarSubmit(evt) {
 }
 
 function handleLike(evt, id) {
-  const cardLiked = evt.target.classList.contains("card__like-btn_liked");
+  const cardLikeButton = evt.target;
+  const isLiked = cardLikeButton.classList.contains("card__like-btn_liked");
+
   api
     .changeLikeStatus(id, isLiked)
     .then((isLiked) => {
-      if (cardLiked) {
-        isLiked = false;
-        cardLikeButton.classList.toggle("card__like-btn_liked");
-      } else {
+      if (isLiked) {
         isLiked = true;
         cardLikeButton.classList.toggle("card__like-btn_liked");
+      } else {
+        isLiked = false;
+        cardLikeButton.classList.toggle("card__like-btn_liked");
       }
-      // isLiked = true;
-      // isLiked.classList.toggle("card__like-btn_liked");
     })
     .catch(console.error);
 }

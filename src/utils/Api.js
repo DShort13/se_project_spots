@@ -72,7 +72,7 @@ class Api {
 
   changeLikeStatus(id, isLiked) {
     return this.request(`${this._baseUrl}/cards/${id}/likes`, {
-      method: isLiked ? "PUT" : "DELETE",
+      method: isLiked ? "DELETE" : "PUT",
       headers: this._headers,
     });
   }
