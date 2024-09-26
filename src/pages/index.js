@@ -5,7 +5,7 @@ import {
   resetValidation,
   disableButton,
 } from "../scripts/validation.js";
-import { renderLoading } from "../utils/helpers";
+import { handleSubmit } from "../utils/helpers";
 import Api from "../utils/Api.js";
 
 let selectedCard, selectedCardId;
@@ -131,24 +131,6 @@ function getCardElement(data) {
 }
 
 // Event handlers
-function handleSubmit(request, evt, loadingText = "Saving...") {
-  evt.preventDefault();
-
-  const submitBtn = evt.submitter;
-  const initialText = submitBtn.textContent;
-
-  renderLoading(true, submitBtn, initialText, loadingText);
-
-  request()
-    .then(() => {
-      evt.target.reset();
-    })
-    .catch(console.error)
-    .finally(() => {
-      renderLoading(false, submitBtn, initialText);
-    });
-}
-
 function handleAvatarSubmit(evt) {
   function makeRequest() {
     return api.editAvatarInfo(avatarInput.value).then((avatarData) => {
