@@ -195,8 +195,7 @@ function handleAddCardSubmit(evt) {
     return api
       .addCard({ name: titleInput.value, link: imageInput.value })
       .then((cardData) => {
-        const cardElement = getCardElement(cardData);
-        cardsList.prepend(cardElement);
+        renderCard(cardData);
         disableButton(cardSubmitButton, settings);
         closeModal(cardModal);
       });
@@ -213,7 +212,7 @@ function handleDeleteCardSubmit(evt) {
     });
   }
 
-  handleSubmit(makeRequest, evt);
+  handleSubmit(makeRequest, evt, "Deleting...");
 }
 
 // Event listeners
