@@ -66,6 +66,9 @@ const avatarSubmitButton = avatarModal.querySelector(".modal__submit-btn");
 // Delete form elements
 const deleteModal = document.querySelector("#delete-modal");
 const deleteForm = deleteModal.querySelector(".modal__form");
+const deleteCancelButton = deleteModal.querySelector(
+  ".modal__submit-btn_type_cancel"
+);
 
 // Card-related elements
 const cardTemplate = document.querySelector("#card-template").content;
@@ -245,5 +248,9 @@ cardModalButton.addEventListener("click", () => {
 cardModalForm.addEventListener("submit", handleAddCardSubmit);
 
 deleteForm.addEventListener("submit", handleDeleteCardSubmit);
+
+deleteCancelButton.addEventListener("click", () => {
+  closeModal(deleteModal);
+});
 
 enableValidation(settings);
