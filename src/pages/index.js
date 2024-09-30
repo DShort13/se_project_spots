@@ -61,6 +61,7 @@ const titleInput = cardModal.querySelector("#card-caption-input");
 const avatarModal = document.querySelector("#avatar-modal");
 const avatarModalForm = avatarModal.querySelector("#edit-avatar-form");
 const avatarInput = avatarModal.querySelector("#profile-avatar-input");
+const avatarSubmitButton = avatarModal.querySelector(".modal__submit-btn");
 
 // Delete form elements
 const deleteModal = document.querySelector("#delete-modal");
@@ -135,6 +136,7 @@ function handleAvatarSubmit(evt) {
   function makeRequest() {
     return api.editAvatarInfo(avatarInput.value).then((avatarData) => {
       profileImage.src = avatarData.avatar;
+      disableButton(avatarSubmitButton, settings);
       closeModal(avatarModal);
     });
   }
