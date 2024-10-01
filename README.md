@@ -29,8 +29,8 @@ It was created using HTML, CSS, and Javascript, based on a Figma design brief.
 
 **Images**
 
-- ![desktop-view](./images/demo/desktop_view.jpeg)
-- ![mobile-view](./images/demo/mobile_view.jpeg)
+- ![desktop-view](./src/images/demo/desktop_view.jpeg)
+- ![mobile-view](./src/images/demo/mobile_view.jpeg)
 
 **Plans for improvement**
 
